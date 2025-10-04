@@ -36,19 +36,6 @@ h1{margin-bottom:1vw;color:#ff4d6d;text-shadow:0 0.2vw 0.5vw rgba(0,0,0,0.2);fon
 }
 .balance-card span{font-weight:600;color:#2a9d8f;}
 .bet-card input{width:40%;padding:1vw;border-radius:1vw;border:0.1vw solid #ccc;font-size:3vw;}
-.bet-buttons{
-  display:flex;justify-content:center;gap:2vw;margin-top:2vw;flex-wrap:wrap;
-}
-.bet-buttons button{
-  display:flex;align-items:center;gap:0.5vw;padding:1vw 2vw;border-radius:1.2vw;
-  border:none;font-size:3vw;font-weight:600;cursor:pointer;color:white;
-  transition:transform 0.2s ease,box-shadow 0.2s ease,filter 0.2s ease;
-}
-.bet-buttons button:hover{transform:translateY(-0.4vw) scale(1.05);box-shadow:0 0.6vw 2vw rgba(0,0,0,0.3);filter:brightness(1.1);}
-.btn-joya1{background:linear-gradient(45deg,#ff6a6a,#ffb347);}
-.btn-joya2{background:linear-gradient(45deg,#6a11cb,#2575fc);}
-.btn-joya3{background:linear-gradient(45deg,#f7971e,#ffd200);}
-.bet-buttons img{width:5vw;height:5vw;border-radius:50%;}
 .coin-container{perspective:1500px;margin:3vw 0;position:relative;flex:1;display:flex;align-items:center;justify-content:center;}
 .coin{width:30vw;height:30vw;background-size:cover;border-radius:50%;transform-style:preserve-3d;transition:transform 0.5s ease;}
 .coin-shadow{width:25vw;height:2vw;background:rgba(0,0,0,0.2);border-radius:50%;position:absolute;bottom:5%;transform:translateX(-50%) scaleX(1);transition:transform 0.5s ease;}
@@ -56,17 +43,69 @@ h1{margin-bottom:1vw;color:#ff4d6d;text-shadow:0 0.2vw 0.5vw rgba(0,0,0,0.2);fon
 .result.win{background:linear-gradient(90deg,#a1ffce,#faffd1);color:#155724;}
 .result.lose{background:linear-gradient(90deg,#f5576c,#f093fb);color:#721c24;}
 .deposit-withdraw{display:flex;justify-content:center;gap:2vw;margin-top:2vw;}
-.deposit-withdraw button{padding:1vw 3vw;border-radius:1vw;border:none;font-weight:600;cursor:pointer;background:#2a9d8f;color:white;transition:transform 0.2s ease,box-shadow 0.2s ease;}
-.deposit-withdraw button:hover{transform:translateY(-0.2vw);box-shadow:0 0.4vw 1.2vw rgba(0,0,0,0.2);}
+.deposit-withdraw button{
+  padding:1vw 3vw;
+  border-radius:1.5vw;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  background: linear-gradient(135deg,#6a11cb,#2575fc);
+  color:white;
+  font-size:3.5vw;
+  transition:transform 0.3s ease, box-shadow 0.3s ease, filter 0.2s ease;
+  box-shadow:0 0.5vw 1.5vw rgba(0,0,0,0.25);
+}
+.deposit-withdraw button:hover{
+  transform:translateY(-0.3vw) scale(1.05);
+  box-shadow:0 0.8vw 2vw rgba(0,0,0,0.35);
+  filter:brightness(1.1);
+}
+
+/* Bet Buttons */
+.bet-buttons{
+  display:flex;justify-content:center;gap:2vw;margin-top:2vw;flex-wrap:wrap;
+}
+.bet-buttons button{
+  display:flex;
+  flex-direction:column; 
+  align-items:center;
+  justify-content:center;
+  gap:0.8vw;
+  padding:2vw 2.5vw;
+  border-radius:2vw;
+  border:none;
+  font-size:4vw;
+  font-weight:700;
+  cursor:pointer;
+  color:white;
+  transition:transform 0.3s ease,box-shadow 0.3s ease,filter 0.2s ease;
+  box-shadow:0 0.5vw 1.5vw rgba(0,0,0,0.2);
+}
+.bet-buttons button:hover{
+  transform:translateY(-0.5vw) scale(1.08);
+  box-shadow:0 1vw 2vw rgba(0,0,0,0.35);
+  filter:brightness(1.1);
+}
+.btn-joya1{background:linear-gradient(135deg,#ff758c,#ff7eb3);}
+.btn-joya2{background:linear-gradient(135deg,#6a11cb,#2575fc);}
+.btn-joya3{background:linear-gradient(135deg,#f7971e,#ffd200);}
+.bet-buttons img{
+  width:8vw;
+  height:8vw;
+  border-radius:50%;
+  border:0.2vw solid white;
+  box-shadow:0 0.3vw 0.6vw rgba(0,0,0,0.2);
+}
 
 /* Modal Styles */
 .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,0.5);}
-.modal-content{background:#fff;border-radius:2vw;padding:3vw;width:80vw;max-width:400px;margin:15vh auto;position:relative;text-align:center;box-shadow:0 0.8vw 2.5vw rgba(0,0,0,0.3);}
+.modal-content{background:#fff;border-radius:2vw;padding:3vw;width:80vw;max-width:400px;margin:10vh auto;position:relative;text-align:center;box-shadow:0 0.8vw 2.5vw rgba(0,0,0,0.3);}
 .modal-content img{width:20vw;margin:2vw 0;}
 .close{position:absolute;top:2vw;right:3vw;font-size:5vw;font-weight:bold;cursor:pointer;}
-#modalConfirm{background:#2a9d8f;color:white;padding:2vw 4vw;border:none;border-radius:1.2vw;margin-top:2vw;cursor:pointer;}
-#modalConfirm:hover{background:#2575fc;}
-#modalAmount{width:80%;padding:1vw;margin-top:1vw;border-radius:1vw;border:0.1vw solid #ccc;font-size:3vw;}
+.modal-content input{width:80%;padding:1vw;margin:1vw 0;border-radius:1vw;border:0.1vw solid #ccc;font-size:3vw;}
+.modal-content button{padding:1vw 3vw;border-radius:1.2vw;border:none;font-weight:600;margin-top:1vw;cursor:pointer;background:#2a9d8f;color:white;transition:all 0.3s ease;}
+.modal-content button:hover{background:#2575fc;}
+.copy-btn{background:#ff758c;margin:0.5vw auto;display:block;}
 </style>
 </head>
 <body>
@@ -87,86 +126,105 @@ h1{margin-bottom:1vw;color:#ff4d6d;text-shadow:0 0.2vw 0.5vw rgba(0,0,0,0.2);fon
   </div>
   <div class="result" id="result"></div>
   <div class="deposit-withdraw">
-    <button onclick="openModal('deposit')">Deposit</button>
-    <button onclick="openModal('withdraw')">Withdraw</button>
+    <button onclick="openModal('deposit')"><img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/bkashlogo.png" style="width:5vw;margin-right:1vw;">Deposit</button>
+    <button onclick="openModal('withdraw')"><img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/bkashlogo.png" style="width:5vw;margin-right:1vw;">Withdraw</button>
   </div>
 </div>
 
-<!-- Modal Structure -->
-<div id="modal" class="modal">
+<!-- Deposit Modal -->
+<div id="modalDeposit" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
-    <h3 id="modalTitle">Deposit / Withdraw</h3>
     <img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/bkashlogo.png" alt="বিকাশ">
-    <input type="number" id="modalAmount" placeholder="টাকা" min="1">
-    <button id="modalConfirm">Confirm</button>
+    <p>Send Money to: <b>01818781145</b></p>
+    <button class="copy-btn" onclick="copyNumber()">Copy Number</button>
+    <input type="number" id="depositAmount" placeholder="টাকার পরিমাণ">
+    <input type="text" id="trxId" placeholder="TRXID">
+    <button onclick="confirmDeposit()">Confirm</button>
+  </div>
+</div>
+
+<!-- Withdraw Modal -->
+<div id="modalWithdraw" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/bkashlogo.png" alt="বিকাশ">
+    <input type="number" id="withdrawAmount" placeholder="টাকার পরিমাণ">
+    <input type="text" id="bkashNumber" placeholder="বিকাশ নাম্বার">
+    <button onclick="confirmWithdraw()">Confirm</button>
   </div>
 </div>
 
 <audio id="flipSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Coin_Flip___Free_Sound_Effect_MP3_256kbps_256k.mp3"></audio>
 <audio id="winSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Win.mp3"></audio>
 <audio id="loseSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/lose.mp3"></audio>
-<audio id="warningSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/warning.mp3"></audio>
+<audio id="errorSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/beterror.mp3"></audio>
 
 <script>
-const warningSound = document.getElementById('warningSound');
 let balance=1000;
-const outcomes={"option1":"জয়া ১","option2":"জয়া ২","option3":"জয়া ৩"};
-const coinImages={"option1":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/joyapic2.png","option2":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-09-17_15-51-29-549.png","option3":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-10-02_00-49-26-393(0).png"};
+function updateBalance(){document.getElementById('balance').innerText=balance;}
+function showResult(msg,type){const res=document.getElementById('result');res.innerText=msg;res.className='result '+type;}
 
-function updateBalance(){
-  document.getElementById('balance').innerText = balance;
-  document.querySelectorAll('.bet-buttons button').forEach(btn=>{
-    btn.disabled = balance <= 0;
-    btn.style.opacity = balance <= 0 ? 0.5 : 1;
-    btn.style.cursor = balance <= 0 ? 'not-allowed' : 'pointer';
-  });
-}
-function showResult(msg,type){
-  const res=document.getElementById('result');
-  res.innerText=msg;
-  res.className='result '+type;
+/* Copy Number Function */
+function copyNumber(){
+  navigator.clipboard.writeText("01818781145").then(()=>{alert("Number copied!");});
 }
 
 /* Modal Functions */
-let currentAction='';
-function openModal(action){
-  currentAction=action;
-  document.getElementById('modalTitle').innerText = action==='deposit'?'Deposit':'Withdraw';
-  document.getElementById('modalAmount').value='';
-  document.getElementById('modal').style.display='block';
-}
-function closeModal(){document.getElementById('modal').style.display='none';}
-
-document.getElementById('modalConfirm').onclick=function(){
-  let amt=parseInt(document.getElementById('modalAmount').value);
-  if(isNaN(amt)||amt<=0){alert('টাকা লিখুন'); return;}
-  if(currentAction==='deposit'){
-    balance+=amt;
-    showResult(`আপনি ${amt} টাকা ডিপোজিট করেছেন।`,'win');
+function openModal(type){
+  if(type==='deposit'){
+    document.getElementById('modalDeposit').style.display='block';
   } else {
-    if(amt>balance){
-      alert('ব্যালেন্স পর্যাপ্ত নয়'); warningSound.play();
-      return;
-    }
-    balance-=amt;
-    showResult(`আপনি ${amt} টাকা উইথড্র করেছেন।`,'win');
+    document.getElementById('modalWithdraw').style.display='block';
   }
-  updateBalance(); closeModal();
+}
+function closeModal(){
+  document.getElementById('modalDeposit').style.display='none';
+  document.getElementById('modalWithdraw').style.display='none';
+}
+
+/* Confirm Deposit */
+function confirmDeposit(){
+  let amt=parseInt(document.getElementById('depositAmount').value);
+  let trx=document.getElementById('trxId').value;
+  if(isNaN(amt)||amt<=0){alert('টাকার পরিমাণ লিখুন');return;}
+  if(trx===''){alert('TRXID দিন');return;}
+  balance+=amt;
+  updateBalance();
+  showResult(`আপনি ${amt} টাকা ডিপোজিট করেছেন। TRXID: ${trx}`,'win');
+  closeModal();
+}
+
+/* Confirm Withdraw */
+function confirmWithdraw(){
+  let amt=parseInt(document.getElementById('withdrawAmount').value);
+  let number=document.getElementById('bkashNumber').value;
+  if(isNaN(amt)||amt<=0){alert('টাকার পরিমাণ লিখুন');return;}
+  if(number===''){alert('বিকাশ নাম্বার দিন');return;}
+  if(amt>balance){alert('ব্যালেন্স পর্যাপ্ত নয়'); return;}
+  balance-=amt;
+  updateBalance();
+  showResult(`আপনি ${amt} টাকা উইথড্র করেছেন। বিকাশ নাম্বার: ${number}`,'win');
+  closeModal();
 }
 
 /* Coin Flip Game */
+const outcomes={"option1":"জয়া ১","option2":"জয়া ২","option3":"জয়া ৩"};
+const coinImages={"option1":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/joyapic2.png","option2":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-09-17_15-51-29-549.png","option3":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-10-02_00-49-26-393(0).png"};
+
 function placeBet(choice){
   let bet=parseInt(document.getElementById('bet').value);
-  if(bet>balance){showResult(`আপনার ব্যালেন্স পর্যাপ্ত নয়।`,'lose');return;}
-  if(bet<=0||isNaN(bet)){showResult(`বেট দিন।`,'lose');return;}
+  const errorSound=document.getElementById('errorSound');
+
+  if(bet>balance){showResult(`আপনার ব্যালেন্স পর্যাপ্ত নয়।`,'lose');errorSound.play();return;}
+  if(bet<=0||isNaN(bet)){showResult(`বেট দিন।`,'lose');errorSound.play();return;}
 
   const coin=document.getElementById('coin');
   const shadow=document.getElementById('coinShadow');
   const sound=document.getElementById('flipSound');
   sound.currentTime=0; sound.play();
 
-  const spins=4+Math.random()*2;
+  const spins=3+Math.random()*2;
   const duration=2000;
   const finalOutcomeKeys=Object.keys(outcomes);
   const outcomeIndex=Math.floor(Math.random()*finalOutcomeKeys.length);
@@ -174,24 +232,24 @@ function placeBet(choice){
 
   let start=performance.now();
   function animate(time){
-    let t=(time-start)/duration; if(t>1)t=1;
-    let angle=spins*360*t;
-    let yPos=-30+60*t;
-    coin.style.transform=`translateX(-50%) translateY(${yPos}vw) rotateX(${angle}deg) rotateY(${angle}deg)`;
+    let t=(time-start)/duration;if(t>1)t=1;
+    let angle=spins*360*t; let yPos=-100+200*t;
+    coin.style.transform=`translateX(-50%) translateY(${yPos}px) rotateX(${angle}deg)`;
     shadow.style.transform=`translateX(-50%) scaleX(${1-0.3*t})`;
     if(t<1) requestAnimationFrame(animate);
     else{
       coin.style.transition='transform 0.3s ease';
-      coin.style.transform=`translateX(-50%) translateY(20vw) rotateX(${angle}deg) rotateY(${angle}deg)`;
+      coin.style.transform=`translateX(-50%) translateY(100px) rotateX(${angle}deg)`;
       coin.style.backgroundImage=`url('${coinImages[outcome]}')`;
       shadow.style.transform=`translateX(-50%) scaleX(0.7)`;
+      setTimeout(()=>{coin.style.transform=`translateX(-50%) translateY(90px) rotateX(${angle}deg)`;shadow.style.transform=`translateX(-50%) scaleX(0.8)`;},200);
       setTimeout(()=>{
         if(choice===outcome){
-          balance+=bet*2; updateBalance();
+          balance+=bet*2;updateBalance();
           showResult(`🎉 আপনি জিতেছেন! ${bet*2} টাকা পেয়েছেন। ফল: ${outcomes[outcome]}`,'win');
           document.getElementById('winSound').play();
         } else {
-          balance-=bet; updateBalance();
+          balance-=bet;updateBalance();
           showResult(`😞 আপনি হেরেছেন! ${bet} টাকা হারালেন। ফল: ${outcomes[outcome]}`,'lose');
           document.getElementById('loseSound').play();
         }
@@ -200,6 +258,7 @@ function placeBet(choice){
   }
   requestAnimationFrame(animate);
 }
+
 updateBalance();
 </script>
 </body>
