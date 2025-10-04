@@ -7,48 +7,66 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html, body{width:100%;height:100%;overflow:hidden;}
 body{
   background: linear-gradient(135deg,#ff9a9e,#fad0c4,#a1c4fd,#c2e9fb);
-  display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;
+  display:flex;justify-content:center;align-items:center;
 }
 .game-container{
   background: radial-gradient(circle at top left,#ffffff,#ffe6f0,#e6f7ff);
-  border-radius:25px;box-shadow:0 15px 35px rgba(0,0,0,0.2);
-  padding:30px 25px;max-width:420px;width:100%;text-align:center;
+  border-radius:2vw;
+  box-shadow:0 1vw 2vw rgba(0,0,0,0.2);
+  width:90vw;
+  max-width:500px;
+  height:90vh;
+  padding:2vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  text-align:center;
 }
-h1{margin-bottom:20px;color:#ff4d6d;text-shadow:0 2px 5px rgba(0,0,0,0.2);}
+h1{margin-bottom:1vw;color:#ff4d6d;text-shadow:0 0.2vw 0.5vw rgba(0,0,0,0.2);font-size:4vw;}
 .balance-card,.bet-card{
   background:linear-gradient(145deg,#fff8e1,#ffe0f0);
-  border-radius:18px;padding:15px;margin-bottom:20px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  border-radius:1.5vw;
+  padding:1.2vw;
+  margin-bottom:2vw;
+  box-shadow:0 0.5vw 1.8vw rgba(0,0,0,0.1);
+  font-size:3vw;
 }
-.balance-card span{font-weight:600;font-size:22px;color:#2a9d8f;}
-.bet-card input{width:80px;padding:8px;border-radius:10px;border:1px solid #ccc;margin-bottom:10px;font-size:16px;}
-.bet-buttons{display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap;}
-.bet-buttons button{display:flex;align-items:center;gap:6px;padding:10px 15px;border-radius:12px;border:none;font-size:16px;font-weight:600;cursor:pointer;color:white;transition:transform 0.2s ease,box-shadow 0.2s ease,filter 0.2s ease;}
-.bet-buttons button:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,0.3);filter:brightness(1.1);}
+.balance-card span{font-weight:600;color:#2a9d8f;}
+.bet-card input{width:40%;padding:1vw;border-radius:1vw;border:0.1vw solid #ccc;font-size:3vw;}
+.bet-buttons{
+  display:flex;justify-content:center;gap:2vw;margin-top:2vw;flex-wrap:wrap;
+}
+.bet-buttons button{
+  display:flex;align-items:center;gap:0.5vw;padding:1vw 2vw;border-radius:1.2vw;
+  border:none;font-size:3vw;font-weight:600;cursor:pointer;color:white;
+  transition:transform 0.2s ease,box-shadow 0.2s ease,filter 0.2s ease;
+}
+.bet-buttons button:hover{transform:translateY(-0.4vw) scale(1.05);box-shadow:0 0.6vw 2vw rgba(0,0,0,0.3);filter:brightness(1.1);}
 .btn-joya1{background:linear-gradient(45deg,#ff6a6a,#ffb347);}
 .btn-joya2{background:linear-gradient(45deg,#6a11cb,#2575fc);}
 .btn-joya3{background:linear-gradient(45deg,#f7971e,#ffd200);}
-.bet-buttons img{width:30px;height:30px;border-radius:50%;}
-.coin-container{perspective:1500px;margin:20px 0;position:relative;height:160px;}
-.coin{width:120px;height:120px;margin:0 auto;background-size:cover;border-radius:50%;transform-style:preserve-3d;position:absolute;top:0;left:50%;transform:translateX(-50%);transition:transform 0.5s ease;}
-.coin-shadow{width:100px;height:10px;background:rgba(0,0,0,0.2);border-radius:50%;position:absolute;bottom:0;left:50%;transform:translateX(-50%) scaleX(1);transition:transform 0.5s ease;}
-.result{margin-top:15px;padding:10px;border-radius:10px;font-weight:600;font-size:18px;min-height:40px;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
+.bet-buttons img{width:5vw;height:5vw;border-radius:50%;}
+.coin-container{perspective:1500px;margin:3vw 0;position:relative;flex:1;display:flex;align-items:center;justify-content:center;}
+.coin{width:30vw;height:30vw;background-size:cover;border-radius:50%;transform-style:preserve-3d;transition:transform 0.5s ease;}
+.coin-shadow{width:25vw;height:2vw;background:rgba(0,0,0,0.2);border-radius:50%;position:absolute;bottom:5%;transform:translateX(-50%) scaleX(1);transition:transform 0.5s ease;}
+.result{margin-top:1vw;padding:1vw;border-radius:1vw;font-weight:600;font-size:3vw;min-height:4vw;text-shadow:0 0.2vw 0.4vw rgba(0,0,0,0.2);}
 .result.win{background:linear-gradient(90deg,#a1ffce,#faffd1);color:#155724;}
 .result.lose{background:linear-gradient(90deg,#f5576c,#f093fb);color:#721c24;}
-.deposit-withdraw{display:flex;justify-content:center;gap:10px;margin-top:20px;}
-.deposit-withdraw button{padding:7px 15px;border-radius:10px;border:none;font-weight:600;cursor:pointer;background:#2a9d8f;color:white;transition:transform 0.2s ease,box-shadow 0.2s ease;}
-.deposit-withdraw button:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+.deposit-withdraw{display:flex;justify-content:center;gap:2vw;margin-top:2vw;}
+.deposit-withdraw button{padding:1vw 3vw;border-radius:1vw;border:none;font-weight:600;cursor:pointer;background:#2a9d8f;color:white;transition:transform 0.2s ease,box-shadow 0.2s ease;}
+.deposit-withdraw button:hover{transform:translateY(-0.2vw);box-shadow:0 0.4vw 1.2vw rgba(0,0,0,0.2);}
 
 /* Modal Styles */
 .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,0.5);}
-.modal-content{background:#fff;border-radius:15px;padding:20px;width:300px;margin:100px auto;position:relative;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,0.3);}
-.modal-content img{width:80px;margin:10px 0;}
-.close{position:absolute;top:10px;right:15px;font-size:25px;font-weight:bold;cursor:pointer;}
-#modalConfirm{background:#2a9d8f;color:white;padding:10px 20px;border:none;border-radius:10px;margin-top:10px;cursor:pointer;}
+.modal-content{background:#fff;border-radius:2vw;padding:3vw;width:80vw;max-width:400px;margin:15vh auto;position:relative;text-align:center;box-shadow:0 0.8vw 2.5vw rgba(0,0,0,0.3);}
+.modal-content img{width:20vw;margin:2vw 0;}
+.close{position:absolute;top:2vw;right:3vw;font-size:5vw;font-weight:bold;cursor:pointer;}
+#modalConfirm{background:#2a9d8f;color:white;padding:2vw 4vw;border:none;border-radius:1.2vw;margin-top:2vw;cursor:pointer;}
 #modalConfirm:hover{background:#2575fc;}
-#modalAmount{width:80%;padding:8px;margin-top:10px;border-radius:8px;border:1px solid #ccc;font-size:16px;}
+#modalAmount{width:80%;padding:1vw;margin-top:1vw;border-radius:1vw;border:0.1vw solid #ccc;font-size:3vw;}
 </style>
 </head>
 <body>
@@ -74,7 +92,7 @@ h1{margin-bottom:20px;color:#ff4d6d;text-shadow:0 2px 5px rgba(0,0,0,0.2);}
   </div>
 </div>
 
-<!-- Modal Structure with Bkash Logo -->
+<!-- Modal Structure -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
@@ -88,14 +106,27 @@ h1{margin-bottom:20px;color:#ff4d6d;text-shadow:0 2px 5px rgba(0,0,0,0.2);}
 <audio id="flipSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Coin_Flip___Free_Sound_Effect_MP3_256kbps_256k.mp3"></audio>
 <audio id="winSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Win.mp3"></audio>
 <audio id="loseSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/lose.mp3"></audio>
+<audio id="warningSound" src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/warning.mp3"></audio>
 
 <script>
+const warningSound = document.getElementById('warningSound');
 let balance=1000;
 const outcomes={"option1":"জয়া ১","option2":"জয়া ২","option3":"জয়া ৩"};
 const coinImages={"option1":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/joyapic2.png","option2":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-09-17_15-51-29-549.png","option3":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-10-02_00-49-26-393(0).png"};
 
-function updateBalance(){document.getElementById('balance').innerText=balance;}
-function showResult(msg,type){const res=document.getElementById('result');res.innerText=msg;res.className='result '+type;}
+function updateBalance(){
+  document.getElementById('balance').innerText = balance;
+  document.querySelectorAll('.bet-buttons button').forEach(btn=>{
+    btn.disabled = balance <= 0;
+    btn.style.opacity = balance <= 0 ? 0.5 : 1;
+    btn.style.cursor = balance <= 0 ? 'not-allowed' : 'pointer';
+  });
+}
+function showResult(msg,type){
+  const res=document.getElementById('result');
+  res.innerText=msg;
+  res.className='result '+type;
+}
 
 /* Modal Functions */
 let currentAction='';
@@ -106,12 +137,22 @@ function openModal(action){
   document.getElementById('modal').style.display='block';
 }
 function closeModal(){document.getElementById('modal').style.display='none';}
+
 document.getElementById('modalConfirm').onclick=function(){
   let amt=parseInt(document.getElementById('modalAmount').value);
-  if(isNaN(amt)||amt<=0){alert('টাকা লিখুন');return;}
-  if(currentAction==='deposit'){balance+=amt;showResult(`আপনি ${amt} টাকা ডিপোজিট করেছেন।`,'win');}
-  else{if(amt>balance){alert('ব্যালেন্স পর্যাপ্ত নয়');return;}balance-=amt;showResult(`আপনি ${amt} টাকা উইথড্র করেছেন।`,'win');}
-  updateBalance();closeModal();
+  if(isNaN(amt)||amt<=0){alert('টাকা লিখুন'); return;}
+  if(currentAction==='deposit'){
+    balance+=amt;
+    showResult(`আপনি ${amt} টাকা ডিপোজিট করেছেন।`,'win');
+  } else {
+    if(amt>balance){
+      alert('ব্যালেন্স পর্যাপ্ত নয়'); warningSound.play();
+      return;
+    }
+    balance-=amt;
+    showResult(`আপনি ${amt} টাকা উইথড্র করেছেন।`,'win');
+  }
+  updateBalance(); closeModal();
 }
 
 /* Coin Flip Game */
@@ -125,7 +166,7 @@ function placeBet(choice){
   const sound=document.getElementById('flipSound');
   sound.currentTime=0; sound.play();
 
-  const spins=3+Math.random()*2;
+  const spins=4+Math.random()*2;
   const duration=2000;
   const finalOutcomeKeys=Object.keys(outcomes);
   const outcomeIndex=Math.floor(Math.random()*finalOutcomeKeys.length);
@@ -133,26 +174,24 @@ function placeBet(choice){
 
   let start=performance.now();
   function animate(time){
-    let t=(time-start)/duration;if(t>1)t=1;
-    let angle=spins*360*t; let yPos=-100+200*t;
-    coin.style.transform=`translateX(-50%) translateY(${yPos}px) rotateX(${angle}deg)`;
+    let t=(time-start)/duration; if(t>1)t=1;
+    let angle=spins*360*t;
+    let yPos=-30+60*t;
+    coin.style.transform=`translateX(-50%) translateY(${yPos}vw) rotateX(${angle}deg) rotateY(${angle}deg)`;
     shadow.style.transform=`translateX(-50%) scaleX(${1-0.3*t})`;
-
     if(t<1) requestAnimationFrame(animate);
     else{
       coin.style.transition='transform 0.3s ease';
-      coin.style.transform=`translateX(-50%) translateY(100px) rotateX(${angle}deg)`;
+      coin.style.transform=`translateX(-50%) translateY(20vw) rotateX(${angle}deg) rotateY(${angle}deg)`;
       coin.style.backgroundImage=`url('${coinImages[outcome]}')`;
       shadow.style.transform=`translateX(-50%) scaleX(0.7)`;
-      setTimeout(()=>{coin.style.transform=`translateX(-50%) translateY(90px) rotateX(${angle}deg)`;shadow.style.transform=`translateX(-50%) scaleX(0.8)`;},200);
-
       setTimeout(()=>{
         if(choice===outcome){
-          balance+=bet*2;updateBalance();
+          balance+=bet*2; updateBalance();
           showResult(`🎉 আপনি জিতেছেন! ${bet*2} টাকা পেয়েছেন। ফল: ${outcomes[outcome]}`,'win');
           document.getElementById('winSound').play();
         } else {
-          balance-=bet;updateBalance();
+          balance-=bet; updateBalance();
           showResult(`😞 আপনি হেরেছেন! ${bet} টাকা হারালেন। ফল: ${outcomes[outcome]}`,'lose');
           document.getElementById('loseSound').play();
         }
