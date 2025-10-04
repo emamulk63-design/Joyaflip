@@ -16,9 +16,7 @@ body{
   border-radius:25px;box-shadow:0 15px 35px rgba(0,0,0,0.2);
   padding:30px 25px;max-width:420px;width:100%;text-align:center;
 }
-h1{
-  margin-bottom:20px;color:#ff4d6d;text-shadow:0 2px 5px rgba(0,0,0,0.2);
-}
+h1{margin-bottom:20px;color:#ff4d6d;text-shadow:0 2px 5px rgba(0,0,0,0.2);}
 .balance-card,.bet-card{
   background:linear-gradient(145deg,#fff8e1,#ffe0f0);
   border-radius:18px;padding:15px;margin-bottom:20px;
@@ -55,25 +53,25 @@ h1{
 </head>
 <body>
 <div class="game-container">
-<h1>🪙 Coin Flip Game - জয়াভাই</h1>
-<div class="balance-card">ব্যালেন্স: <span id="balance">1000</span> টাকা</div>
-<div class="bet-card">
-<input type="number" id="bet" placeholder="বেট" min="1">
-</div>
-<div class="coin-container">
-<div class="coin" id="coin"></div>
-<div class="coin-shadow" id="coinShadow"></div>
-</div>
-<div class="bet-buttons">
-<button class="btn-joya1" onclick="placeBet('option1')"><img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/joyapic2.png" alt="জয়া ১"> জয়া ১</button>
-<button class="btn-joya2" onclick="placeBet('option2')"><img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-09-17_15-51-29-549.png" alt="জয়া ২"> জয়া ২</button>
-<button class="btn-joya3" onclick="placeBet('option3')"><img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-10-02_00-49-26-393(0).png" alt="জয়া ৩"> জয়া ৩</button>
-</div>
-<div class="result" id="result"></div>
-<div class="deposit-withdraw">
-<button onclick="openModal('deposit')">Deposit</button>
-<button onclick="openModal('withdraw')">Withdraw</button>
-</div>
+  <h1>🪙 Coin Flip Game - জয়াভাই</h1>
+  <div class="balance-card">ব্যালেন্স: <span id="balance">1000</span> টাকা</div>
+  <div class="bet-card">
+    <input type="number" id="bet" placeholder="বেট" min="1">
+  </div>
+  <div class="coin-container">
+    <div class="coin" id="coin"></div>
+    <div class="coin-shadow" id="coinShadow"></div>
+  </div>
+  <div class="bet-buttons">
+    <button class="btn-joya1" onclick="placeBet('option1')"><img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/joyapic2.png" alt="জয়া ১"> জয়া ১</button>
+    <button class="btn-joya2" onclick="placeBet('option2')"><img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-09-17_15-51-29-549.png" alt="জয়া ২"> জয়া ২</button>
+    <button class="btn-joya3" onclick="placeBet('option3')"><img src="https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-10-02_00-49-26-393(0).png" alt="জয়া ৩"> জয়া ৩</button>
+  </div>
+  <div class="result" id="result"></div>
+  <div class="deposit-withdraw">
+    <button onclick="openModal('deposit')">Deposit</button>
+    <button onclick="openModal('withdraw')">Withdraw</button>
+  </div>
 </div>
 
 <!-- Modal Structure with Bkash Logo -->
@@ -95,6 +93,7 @@ h1{
 let balance=1000;
 const outcomes={"option1":"জয়া ১","option2":"জয়া ২","option3":"জয়া ৩"};
 const coinImages={"option1":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/joyapic2.png","option2":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-09-17_15-51-29-549.png","option3":"https://raw.githubusercontent.com/emamulk63-design/Joyaflip/main/Picsart_25-10-02_00-49-26-393(0).png"};
+
 function updateBalance(){document.getElementById('balance').innerText=balance;}
 function showResult(msg,type){const res=document.getElementById('result');res.innerText=msg;res.className='result '+type;}
 
@@ -117,34 +116,51 @@ document.getElementById('modalConfirm').onclick=function(){
 
 /* Coin Flip Game */
 function placeBet(choice){
-let bet=parseInt(document.getElementById('bet').value);
-if(bet>balance){showResult(`আপনার ব্যালেন্স পর্যাপ্ত নয়।`,'lose');return;}
-if(bet<=0||isNaN(bet)){showResult(`বেট দিন।`,'lose');return;}
-const coin=document.getElementById('coin');const shadow=document.getElementById('coinShadow');const sound=document.getElementById('flipSound');
-sound.currentTime=0; sound.play();
-const spins=3+Math.random()*2; const duration=2000;
-const finalOutcomeKeys=Object.keys(outcomes);
-const outcomeIndex=Math.floor(Math.random()*finalOutcomeKeys.length);
-const outcome=finalOutcomeKeys[outcomeIndex];
-let start=performance.now();
-function animate(time){
-let t=(time-start)/duration;if(t>1)t=1;
-let angle=spins*360*t; let yPos=-100+200*t;
-coin.style.transform=`translateX(-50%) translateY(${yPos}px) rotateX(${angle}deg)`;
-shadow.style.transform=`translateX(-50%) scaleX(${1-0.3*t})`;
-if(t<1)requestAnimationFrame(animate);
-else{
-coin.style.transition='transform 0.3s ease';
-coin.style.transform=`translateX(-50%) translateY(100px) rotateX(${angle}deg)`;
-coin.style.backgroundImage=`url('${coinImages[outcome]}')`;
-shadow.style.transform=`translateX(-50%) scaleX(0.7)`;
-setTimeout(()=>{coin.style.transform=`translateX(-50%) translateY(90px) rotateX(${angle}deg)`;shadow.style.transform=`translateX(-50%) scaleX(0.8)`;},200);
-setTimeout(()=>{
-if(choice===outcome){balance+=bet*2;updateBalance();showResult(`🎉 আপনি জিতেছেন! ${bet*2} টাকা পেয়েছেন। ফল: ${outcomes[outcome]}`,'win');document.getElementById('winSound').play();}
-else{balance-=bet;updateBalance();showResult(`😞 আপনি হেরেছেন! ${bet} টাকা হারালেন। ফল: ${outcomes[outcome]}`,'lose');document.getElementById('loseSound').play();}
-},400);
-}}
-requestAnimationFrame(animate);}
+  let bet=parseInt(document.getElementById('bet').value);
+  if(bet>balance){showResult(`আপনার ব্যালেন্স পর্যাপ্ত নয়।`,'lose');return;}
+  if(bet<=0||isNaN(bet)){showResult(`বেট দিন।`,'lose');return;}
+
+  const coin=document.getElementById('coin');
+  const shadow=document.getElementById('coinShadow');
+  const sound=document.getElementById('flipSound');
+  sound.currentTime=0; sound.play();
+
+  const spins=3+Math.random()*2;
+  const duration=2000;
+  const finalOutcomeKeys=Object.keys(outcomes);
+  const outcomeIndex=Math.floor(Math.random()*finalOutcomeKeys.length);
+  const outcome=finalOutcomeKeys[outcomeIndex];
+
+  let start=performance.now();
+  function animate(time){
+    let t=(time-start)/duration;if(t>1)t=1;
+    let angle=spins*360*t; let yPos=-100+200*t;
+    coin.style.transform=`translateX(-50%) translateY(${yPos}px) rotateX(${angle}deg)`;
+    shadow.style.transform=`translateX(-50%) scaleX(${1-0.3*t})`;
+
+    if(t<1) requestAnimationFrame(animate);
+    else{
+      coin.style.transition='transform 0.3s ease';
+      coin.style.transform=`translateX(-50%) translateY(100px) rotateX(${angle}deg)`;
+      coin.style.backgroundImage=`url('${coinImages[outcome]}')`;
+      shadow.style.transform=`translateX(-50%) scaleX(0.7)`;
+      setTimeout(()=>{coin.style.transform=`translateX(-50%) translateY(90px) rotateX(${angle}deg)`;shadow.style.transform=`translateX(-50%) scaleX(0.8)`;},200);
+
+      setTimeout(()=>{
+        if(choice===outcome){
+          balance+=bet*2;updateBalance();
+          showResult(`🎉 আপনি জিতেছেন! ${bet*2} টাকা পেয়েছেন। ফল: ${outcomes[outcome]}`,'win');
+          document.getElementById('winSound').play();
+        } else {
+          balance-=bet;updateBalance();
+          showResult(`😞 আপনি হেরেছেন! ${bet} টাকা হারালেন। ফল: ${outcomes[outcome]}`,'lose');
+          document.getElementById('loseSound').play();
+        }
+      },400);
+    }
+  }
+  requestAnimationFrame(animate);
+}
 updateBalance();
 </script>
 </body>
